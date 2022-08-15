@@ -105,19 +105,25 @@ function calcularAreaCirculo() {
 }
 
 // triangulo isosceles
-function esIsosceles(a, b, c) {
+function listaNumerosUnicos2(array1) {
+
   const newArray = [];
-  const numbers = [a, b, c]
   
-  for (let element of numbers) {
+  for (let element of array1) {
     console.log(element)
     if (!newArray.includes(element)) {
       newArray.push(element);
     }
   }
 
+  return newArray
+}
+
+function esIsosceles(arr) {
+  const newArray = listaNumerosUnicos2(arr)
+
   const lenArray = newArray.length;
-  console.log(lenArray)
+  // console.log(lenArray)
   if (lenArray == 2) {
     return true
     // console.log("true")
@@ -133,9 +139,10 @@ function calcularAlturaTriangulo() {
   const input2 = document.getElementById("lado2");
   const input3 = document.getElementById("basetriangulo");
 
-
-  if (input1 == '' || input2 == '' || input3 == '') {
-    alert("Ingrese un número")
+  // console.dir(input3);
+  if (input1.value == '' || input2.value == '' || input3.value == '' ) {
+    // alert("Ingrese un número");
+    console.error("Ingrese un número");
   }
   else {
     // validar si es un triangulo isosceles
@@ -144,7 +151,7 @@ function calcularAlturaTriangulo() {
     const valueBase = parseFloat(input3.value);
 
     const lista = [value1, value2, valueBase]
-    if (esIsosceles(value1, value2, valueBase)) {
+    if (esIsosceles(lista)) {
       // calcular la altura
       lista.sort((a, b) => a - b);
       console.log(lista)
@@ -161,6 +168,9 @@ function calcularAlturaTriangulo() {
 
       alert(alturaTriangulo)
     }
+    else {
+      console.error("No es un triángulo isósceles ");
+    }
   }
 
 
@@ -175,3 +185,28 @@ function isVacio(letra) {
   }
   
 }
+
+
+function listaNumerosUnicos(array1) {
+
+  let array2 = []
+  array1.forEach(element => {
+    // console.log(element)
+    if (array2.indexOf(element) == -1) {
+      array2.push(element)
+    }
+  });
+
+  return array2
+}
+
+function isIsosceles(array3) {
+
+    const numeroElementos = listaNumerosUnicos(array3)
+
+    if (numeroElementos.length == 2) {
+        return true
+    }
+    return false
+}
+
